@@ -3,8 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="co.edu.udea.compumovil.gr05_20181.labscm20181">
 
-    <uses-sdk tools:overrideLibrary="android.support.v7.appcompat, android.support.v4, android.support.mediacompat, android.support.fragment , android.support.coreui, android.support.coreutils, android.support.graphics.drawable,
-    android.support.compat, gun0912.tedbottompicker" />
+    <uses-sdk tools:overrideLibrary="android.support.v7.appcompat, android.support.v4, android.support.mediacompat, android.support.fragment , android.support.coreui, android.support.coreutils, android.support.graphics.drawable,     android.support.compat, gun0912.tedbottompicker" />
     xmlns:tools="http://schemas.android.com/tools">
     <application
         android:allowBackup="true"
