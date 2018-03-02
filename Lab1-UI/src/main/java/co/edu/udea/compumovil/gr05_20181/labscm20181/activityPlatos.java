@@ -6,11 +6,14 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -36,17 +39,27 @@ public class activityPlatos extends AppCompatActivity {
     public RequestManager mGlideRequestManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platos);
         botonGaleria= (Button) findViewById(R.id.botonGaleria);
-        mGlideRequestManager = Glide.with(this);
+        iv_image= (ImageView) findViewById(R.id.imageView);
+        //mGlideRequestManager = Glide.with(this);
 
         rbm= (CheckBox) findViewById(R.id.mañanaRb);
         rbn= (CheckBox) findViewById(R.id.nocheRb);
+        Glide.with(activityPlatos.this)
+                .load("https://pre00.deviantart.net/0352/th/pre/f/2013/120/7/b/png_monsters_inc_by_upinflames12-d63nx7i.png")
+                .into(iv_image);
         botonGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                setSingleShowButton();
+                //setSingleShowButton();
+               /* Glide.with(activityPlatos.this)
+                        .load("https://pre00.deviantart.net/0352/th/pre/f/2013/120/7/b/png_monsters_inc_by_upinflames12-d63nx7i.png")
+                        .into(iv_image);
+                        */
+
             }
         });
 /*
@@ -93,39 +106,19 @@ public class activityPlatos extends AppCompatActivity {
                     @Override
                     public void onPermissionGranted() {
 
-                        TedBottomPicker bottomSheetDialogFragment = new TedBottomPicker.Builder(activityPlatos.this)
+
+                        TedBottomPicker tedBottomPicker = new TedBottomPicker.Builder(activityPlatos.this)
                                 .setOnImageSelectedListener(new TedBottomPicker.OnImageSelectedListener() {
                                     @Override
-                                    public void onImageSelected(final Uri uri) {
-                                        Log.d("ted", "uri: " + uri);
-                                        Log.d("ted", "uri.getPath(): " + uri.getPath());
-                                        selectedUri = uri;
-
-                                        iv_image.setVisibility(View.VISIBLE);
-                                        mSelectedImagesContainer.setVisibility(View.GONE);
-                                        iv_image.post(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                mGlideRequestManager
-                                                        .load(uri)
-                                                        .into(iv_image);
-                                            }
-                                        });
-                                        /*
-                                        Glide.with(MainActivity.this)
-                                                //.load(uri.toString())
-                                                .load(uri)
+                                    public void onImageSelected(Uri uri) {
+                                        Glide.with(activityPlatos.this)
+                                                .load("http://via.placeholder.com/300.png")
                                                 .into(iv_image);
-                                         */
                                     }
                                 })
-                                //.setPeekHeight(getResources().getDisplayMetrics().heightPixels/2)
-                                .setSelectedUri(selectedUri)
-                                //.showVideoMedia()
-                                .setPeekHeight(1200)
                                 .create();
 
-                        bottomSheetDialogFragment.show(getSupportFragmentManager());
+                        tedBottomPicker.show(getSupportFragmentManager());
 
 
                     }
@@ -147,6 +140,9 @@ public class activityPlatos extends AppCompatActivity {
             }
         });
     }
+
+
+
 
 
 }
