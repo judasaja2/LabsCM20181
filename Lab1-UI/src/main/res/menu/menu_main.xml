@@ -2,10 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".MainActivity">
-    <item android:id="@+id/buttonSalir"
-        android:title="Salir"/>
     <item android:id="@+id/platos"
         android:title="Platos"/>
     <item android:id="@+id/bebidas"
         android:title="Bebidas"/>
+    <item android:id="@+id/limpiar"
+        android:title="Limpiar"/>
+    <item android:id="@+id/salir"
+        android:title="Salir"/>
 </menu>

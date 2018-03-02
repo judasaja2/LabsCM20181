@@ -3,11 +3,14 @@ package co.edu.udea.compumovil.gr05_20181.labscm20181;
 import android.Manifest;
 import android.net.Uri;
 import android.support.annotation.IdRes;
+import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -29,21 +32,24 @@ import java.util.ArrayList;
 import gun0912.tedbottompicker.TedBottomPicker;
 
 public class activityPlatos extends AppCompatActivity {
+
+    private Menu menu;
     Button botonGaleria;
     ArrayList<Uri> selectedUriList;
     Uri selectedUri;
     private ViewGroup mSelectedImagesContainer;
     ImageView iv_image;
-
     CheckBox rbm,rbt,rbn;
     public RequestManager mGlideRequestManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_platos);
-        botonGaleria= (Button) findViewById(R.id.botonGaleria);
-        iv_image= (ImageView) findViewById(R.id.imageView);
+
+        botonGaleria= (Button) findViewById(R.id.botonGaleriaPlato);
+        iv_image= (ImageView) findViewById(R.id.imageViewPlato);
         //mGlideRequestManager = Glide.with(this);
 
         rbm= (CheckBox) findViewById(R.id.mañanaRb);
@@ -94,7 +100,7 @@ public class activityPlatos extends AppCompatActivity {
     private void setSingleShowButton() {
 
 
-        Button btn_single_show = (Button) findViewById(R.id.botonGaleria);
+        Button btn_single_show = (Button) findViewById(R.id.botonGaleriaPlato);
         btn_single_show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,8 +146,27 @@ public class activityPlatos extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        this.menu = menu;
+        menu.getItem(0).setVisible(false);
+        menu.getItem(1).setVisible(false);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem opcionMenu){
+        int id = opcionMenu.getItemId();
+        if(id == R.id.limpiar){
 
+        } else if(id == R.id.salir){
+            System.exit(1);
+        } else if(id == android.R.id.home){
+            NavUtils.navigateUpFromSameTask(this);
+        }
+        return true;
+    }
 
 
 }
