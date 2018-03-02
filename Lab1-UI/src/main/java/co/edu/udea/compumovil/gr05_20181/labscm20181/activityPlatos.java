@@ -48,13 +48,11 @@ public class activityPlatos extends AppCompatActivity {
 
         rbm= (CheckBox) findViewById(R.id.mañanaRb);
         rbn= (CheckBox) findViewById(R.id.nocheRb);
-        Glide.with(activityPlatos.this)
-                .load("https://pre00.deviantart.net/0352/th/pre/f/2013/120/7/b/png_monsters_inc_by_upinflames12-d63nx7i.png")
-                .into(iv_image);
+
         botonGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //setSingleShowButton();
+                setSingleShowButton();
                /* Glide.with(activityPlatos.this)
                         .load("https://pre00.deviantart.net/0352/th/pre/f/2013/120/7/b/png_monsters_inc_by_upinflames12-d63nx7i.png")
                         .into(iv_image);
@@ -112,7 +110,8 @@ public class activityPlatos extends AppCompatActivity {
                                     @Override
                                     public void onImageSelected(Uri uri) {
                                         Glide.with(activityPlatos.this)
-                                                .load("http://via.placeholder.com/300.png")
+                                                .load(uri)
+                                                //.placeholder(R.drawable.img_error)
                                                 .into(iv_image);
                                     }
                                 })
@@ -134,7 +133,7 @@ public class activityPlatos extends AppCompatActivity {
                  TedPermission.with(activityPlatos.this)
                         .setPermissionListener(permissionlistener)
                         .setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
-                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+                        .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.INTERNET)
                         .check();
 
             }
