@@ -2,13 +2,18 @@ package co.edu.udea.compumovil.gr05_20181.labscm20181;
 
 import android.Manifest;
 import android.net.Uri;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -26,6 +31,8 @@ public class activityPlatos extends AppCompatActivity {
     Uri selectedUri;
     private ViewGroup mSelectedImagesContainer;
     ImageView iv_image;
+
+    CheckBox rbm,rbt,rbn;
     public RequestManager mGlideRequestManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,12 +40,44 @@ public class activityPlatos extends AppCompatActivity {
         setContentView(R.layout.activity_platos);
         botonGaleria= (Button) findViewById(R.id.botonGaleria);
         mGlideRequestManager = Glide.with(this);
+
+        rbm= (CheckBox) findViewById(R.id.mañanaRb);
+        rbn= (CheckBox) findViewById(R.id.nocheRb);
         botonGaleria.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setSingleShowButton();
             }
         });
+/*
+        rbm.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                rbt.setChecked(false);
+                rbn.setChecked(false);
+
+            }
+        });
+
+        rbn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                rbm.setChecked(false);
+                rbt.setChecked(false);
+
+            }
+        });
+
+        rbt.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                rbn.setChecked(false);
+                rbm.setChecked(false);
+
+            }
+        });
+        */
+
 
     }
     private void setSingleShowButton() {
